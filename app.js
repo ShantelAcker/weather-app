@@ -5,6 +5,8 @@ window.addEventListener('load', () => {
     let temperatureDegree = document.querySelector('.temperature-degree');
     let locationTimezone = document.querySelector('.location-timezone');
     let weatherIcon = document.querySelector('.weather-icon');
+    let temperatureSection = document.querySelector('.temperature');
+    const temperatureSpan = document.querySelector('.unit');
 
     if(navigator.geolocation) {
         //getting the coordinates from the user
@@ -33,10 +35,24 @@ window.addEventListener('load', () => {
                 const weatherImage = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
                 //set DOM elements equal to api data
-                temperatureDegree.textContent = temp;
+                temperatureDegree.textContent = Math.floor(temp);
                 temperatureDescription.textContent = description; 
                 locationTimezone.textContent = name;
                 weatherIcon.innerHTML = `<img src="icons/${icon}.png">`;
+
+                //formulas
+                let celcius = (temp - 32) * (5/9);
+
+                //allow to change to celcius/fahrenheit
+                temperatureSection.addEventListener('click', () => {
+                    if (temperatureSpan.textContent === 'F') {
+                        temperatureDegree.textContent = Math.floor(celcius);
+                        temperatureSpan.textContent = 'C';
+                    } else {
+                        temperatureSpan.textContent = 'F';
+                        temperatureDegree.textContent = Math.floor(temp);
+                    }
+                });
             });
         });
 

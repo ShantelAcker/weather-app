@@ -10,9 +10,10 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(rgb(47,150,163), rgb(48,62,143));
+    /* background: linear-gradient(rgb(47,150,163), rgb(48,62,143)); */
+    background: linear-gradient(rgb(99, 121, 243), rgb(154, 222, 248)) ;
     font-family: sans-serif;
-    color: white;
+    /* color: white; */
 }
 
 .location, .temperature {
@@ -44,4 +45,9 @@ body {
 
 .temperature-description {
     text-transform: capitalize;
+    font-size: 20px;
+}
+
+.location-timezone {
+    font-size: 2.5em;
 }
